@@ -17,7 +17,7 @@ let errors = {
 };
 let edits = [];
 // Add event listeners
-form.addEventListener("submit", function(e) {
+form.addEventListener("submit", function (e) {
   e.preventDefault();
   console.log("Form Submitted");
   checkName();
@@ -27,14 +27,14 @@ form.addEventListener("submit", function(e) {
   checkEmail();
   let formfail = false;
   // loop through errors obj to check if any errors = true
-  Object.keys(errors).forEach(function(item) {
+  Object.keys(errors).forEach(function (item) {
     console.log(item + ": " + errors[item]);
-    if(errors[item]) {
+    if (errors[item]) {
       //if an error is found set formfail to true
       formfail = true;
     }
   })
-  if(formfail) {
+  if (formfail) {
     alert("The form failed, please correct errors");
   } else {
     alert("form submitted successfully");
@@ -42,7 +42,7 @@ form.addEventListener("submit", function(e) {
   }
 });
 
-pass1.addEventListener("keyup", function() {
+pass1.addEventListener("keyup", function () {
   console.log("key up event");
   checkLength();
 })
@@ -52,14 +52,14 @@ let edits = [];
 table.addEventListener("click", (e) => {
   e.preventDefault();
   console.log(e.target);
-  if(e.target.classList.contains("edit")== true){
+  if (e.target.classList.contains("edit") == true) {
     let basestate = e.target.closest("tr").cloneNode(true);
     edits.push(basestate);
     addEditInputs(e.target);
     addEditButtons(e.target);
-  } else if (e.target.classList.contains("delete")== true) {
+  } else if (e.target.classList.contains("delete") == true) {
     deleteRow(e.target);
-  } else if (e.target.classList.contains("update")== true){
+  } else if (e.target.classList.contains("update") == true) {
     updateRow(e.target);
     removeEditButtons(e.target);
   }
@@ -67,7 +67,7 @@ table.addEventListener("click", (e) => {
 
 // Update DOM
 // update row with user input
-function updateRow(t){
+function updateRow(t) {
   let row = t.closest("tr");
   // 1st get input values
   let newname = row.children[1].firstChild.value;
@@ -122,18 +122,18 @@ function addClassmate() {
   let tr = document.querySelectorAll("tr");
   let newrow = table.insertRow();
   let td = "<td>" + tr.length + "</td>";
-     td += "<td>" + uname.value + "</td>";
-     td += "<td>" + age.value + "</td>";
-     td += "<td><a href='#' class='edit'>edit</a></td>";
+  td += "<td>" + uname.value + "</td>";
+  td += "<td>" + age.value + "</td>";
+  td += "<td><a href='#' class='edit'>edit</a></td>";
   console.log(td);
   newrow.innerHTML = td;
 }
 
 // Perform Functions
 
-  //check username is between 5 - 20 chars
+//check username is between 5 - 20 chars
 function checkName() {
-  if(uname.value.length < 5 || uname.value.length > 20) {
+  if (uname.value.length < 5 || uname.value.length > 20) {
     errors.unameerr = true;
     error[0].style = "display:initial";
   } else {
@@ -144,7 +144,7 @@ function checkName() {
 
 function checkPass1() {
   console.log("password check 1");
-  if(pass1.value.length < 10 || pass1.value.length > 20) {
+  if (pass1.value.length < 10 || pass1.value.length > 20) {
     errors.pass1err = true;
     error[2].style = "display:initial";
   } else {
@@ -154,7 +154,7 @@ function checkPass1() {
 }
 
 function matchPasswords() {
-  if(pass1.value != pass2.value) {
+  if (pass1.value != pass2.value) {
     errors.pass2err = true;
     error[3].style = "display:initial";
   } else {
@@ -168,13 +168,13 @@ function checkLength() {
   let percent = (passlen / 10) * 100;
   let progressbar = document.querySelector(".progress-bar");
   progressbar.style = "width: " + percent + "%";
-  if(percent >= 100 && percent <= 200) {
+  if (percent >= 100 && percent <= 200) {
     progressbar.classList.add("bg-success");
     progressbar.classList.remove("bg-danger");
-  } else if(percent > 200) {
+  } else if (percent > 200) {
     progressbar.classList.remove("bg-success");
     progressbar.classList.add("bg-danger");
-  } else if(percent < 100) {
+  } else if (percent < 100) {
     progressbar.classList.remove("bg-success");
   }
   console.log(percent);
@@ -183,7 +183,7 @@ function checkLength() {
 // check user email
 function checkEmail() {
   let pattern = new RegExp(/^[+a-zA-Z1-9._-]+@[a-zA-Z1-9.-]+\.[a-zA-Z]{2,4}$/i);
-  if(pattern.test(email.value)) {
+  if (pattern.test(email.value)) {
     console.log("true, email valid");
     hideFalse(error[1], errors.emailerr);
   } else {
@@ -193,7 +193,7 @@ function checkEmail() {
 }
 // check age within range
 function checkAge() {
-  if(age.value < 15 || age.value > 40) {
+  if (age.value < 15 || age.value > 40) {
     showTrue(error[4], errors.age);
   } else {
     hideFalse(error[4], errors.age);
@@ -212,3 +212,5 @@ function hideFalse(el, err) {
 }
 
 console.log("modified");
+
+console.log("Quan da o day");
