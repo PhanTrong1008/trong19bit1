@@ -112,3 +112,7 @@ table input {
 table input:focus {
     outline: none;
 }
+
+h1{
+  color: red;
+}
